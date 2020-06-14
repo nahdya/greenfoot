@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class name="roket" extends="Actor" extends-java="Actor" enable="true" strideversion="1">
+    <javadoc xml:space="preserve"/>
+    <imports>
+        <import target="java.util.*" enable="true"/>
+        <import target="greenfoot.*" enable="true"/>
+    </imports>
+    <implements/>
+    <fields>
+        <variable access="private" type="int" type-java="int" name="score" value="0" value-java="0" enable="true"/>
+        <variable access="private" type="int" type-java="int" name="kecepatan" value="1" value-java="1" enable="true"/>
+    </fields>
+    <constructors/>
+    <methods>
+        <method access="public" type="void" type-java="void" name="act" enable="true">
+            <javadoc xml:space="preserve">Act - do whatever the roket wants to do. This method is called whenever the 'Act' or 'Run' button gets pressed in the environment.</javadoc>
+            <params/>
+            <throws/>
+            <body>
+                <call expression="getWorld().showText(&quot;Score=&quot;+score,50,10)" expression-java="getWorld().showText(&quot;Score=&quot; + score, 50, 10)" enable="true"/>
+                <call expression="Belok()" expression-java="Belok()" enable="true"/>
+                <call expression="move(kecepatan)" expression-java="move(kecepatan)" enable="true"/>
+                <call expression="Tabrak()" expression-java="Tabrak()" enable="true"/>
+            </body>
+        </method>
+        <method access="public" type="void" type-java="void" name="Belok" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params/>
+            <throws/>
+            <body>
+                <if condition="Greenfoot.isKeyDown(&quot;Up&quot;)" condition-java="Greenfoot.isKeyDown(&quot;Up&quot;)" enable="true">
+                    <ifStatements>
+                        <call expression="turn(-5)" expression-java="turn(-5)" enable="true"/>
+                    </ifStatements>
+                </if>
+                <if condition="Greenfoot.isKeyDown(&quot;Down&quot;)" condition-java="Greenfoot.isKeyDown(&quot;Down&quot;)" enable="true">
+                    <ifStatements>
+                        <call expression="turn(5)" expression-java="turn(5)" enable="true"/>
+                    </ifStatements>
+                </if>
+                <if condition="Greenfoot.isKeyDown(&quot;Left&quot;)" condition-java="Greenfoot.isKeyDown(&quot;Left&quot;)" enable="true">
+                    <ifStatements>
+                        <call expression="turn(-5)" expression-java="turn(-5)" enable="true"/>
+                    </ifStatements>
+                </if>
+                <if condition="Greenfoot.isKeyDown(&quot;Right&quot;)" condition-java="Greenfoot.isKeyDown(&quot;Right&quot;)" enable="true">
+                    <ifStatements>
+                        <call expression="turn(5)" expression-java="turn(5)" enable="true"/>
+                    </ifStatements>
+                </if>
+            </body>
+        </method>
+        <method access="public" type="void" type-java="void" name="Tabrak" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params/>
+            <throws/>
+            <body>
+                <if condition="isTouching(balon.class)" condition-java="isTouching(balon.class)" enable="true">
+                    <ifStatements>
+                        <call expression="removeTouching(balon.class)" expression-java="removeTouching(balon.class)" enable="true"/>
+                        <variable type="int" type-java="int" name="x" value="Greenfoot.getRandomNumber(1000)" value-java="Greenfoot.getRandomNumber(1000)" enable="true"/>
+                        <variable type="int" type-java="int" name="y" value="Greenfoot.getRandomNumber(600)" value-java="Greenfoot.getRandomNumber(600)" enable="true"/>
+                        <variable type="balon" type-java="balon" name="baru" value="new balon()" value-java=" new balon()" enable="true"/>
+                        <call expression="getWorld().addObject(baru,x,y)" expression-java="getWorld().addObject(baru, x, y)" enable="true"/>
+                        <assign dest="score" dest-java="score" src="score+1" src-java="score + 1" enable="true"/>
+                        <assign dest="kecepatan" dest-java="kecepatan" src="kecepatan+1" src-java="kecepatan + 1" enable="true"/>
+                        <if condition="kecepatan==10" condition-java="kecepatan == 10" enable="true">
+                            <ifStatements>
+                                <assign dest="kecepatan" dest-java="kecepatan" src="10" src-java="10" enable="true"/>
+                            </ifStatements>
+                        </if>
+                    </ifStatements>
+                </if>
+                <if condition="isTouching(boom.class)" condition-java="isTouching(boom.class)" enable="true">
+                    <ifStatements>
+                        <variable type="gameover" type-java="gameover" name="gameOver" value="new gameover()" value-java=" new gameover()" enable="true"/>
+                        <call expression="getWorld().addObject(gameOver,getWorld().getWidth()/2,getWorld().getHeight()/2)" expression-java="getWorld().addObject(gameOver, getWorld().getWidth() / 2, getWorld().getHeight() / 2)" enable="true"/>
+                        <call expression="Greenfoot.stop()" expression-java="Greenfoot.stop()" enable="true"/>
+                    </ifStatements>
+                </if>
+            </body>
+        </method>
+    </methods>
+</class>

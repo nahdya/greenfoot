@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class name="MyWorld" extends="World" extends-java="World" enable="true" strideversion="1">
+    <javadoc xml:space="preserve"/>
+    <imports>
+        <import target="java.util.*" enable="true"/>
+        <import target="greenfoot.*" enable="true"/>
+    </imports>
+    <implements/>
+    <fields/>
+    <constructors>
+        <constructor access="public" enable="true">
+            <javadoc xml:space="preserve">Constructor for objects of class MyWorld.</javadoc>
+            <params/>
+            <throws/>
+            <delegate target="super" params="1000,600,1" params-java="1000, 600, 1"/>
+            <body>
+                <call expression="prepare()" expression-java="prepare()" enable="true"/>
+            </body>
+        </constructor>
+    </constructors>
+    <methods>
+        <method access="private" type="void" type-java="void" name="prepare" enable="true">
+            <javadoc xml:space="preserve">Prepare the world for the start of the program.
+That is: create the initial objects and add them to the world.</javadoc>
+            <params/>
+            <throws/>
+            <body>
+                <variable type="roket" type-java="roket" name="roket" value="new roket()" value-java=" new roket()" enable="true"/>
+                <call expression="addObject(roket,303,55)" expression-java="addObject(roket, 303, 55)" enable="true"/>
+                <call expression="roket.setLocation(98,79)" expression-java="roket.setLocation(98, 79)" enable="true"/>
+                <variable type="balon" type-java="balon" name="balon" value="new balon()" value-java=" new balon()" enable="true"/>
+                <call expression="addObject(balon,504,101)" expression-java="addObject(balon, 504, 101)" enable="true"/>
+                <variable type="balon" type-java="balon" name="balon2" value="new balon()" value-java=" new balon()" enable="true"/>
+                <call expression="addObject(balon2,792,302)" expression-java="addObject(balon2, 792, 302)" enable="true"/>
+                <variable type="balon" type-java="balon" name="balon3" value="new balon()" value-java=" new balon()" enable="true"/>
+                <call expression="addObject(balon3,526,411)" expression-java="addObject(balon3, 526, 411)" enable="true"/>
+                <variable type="balon" type-java="balon" name="balon4" value="new balon()" value-java=" new balon()" enable="true"/>
+                <call expression="addObject(balon4,317,294)" expression-java="addObject(balon4, 317, 294)" enable="true"/>
+                <variable type="boom" type-java="boom" name="boom" value="new boom()" value-java=" new boom()" enable="true"/>
+                <call expression="addObject(boom,773,143)" expression-java="addObject(boom, 773, 143)" enable="true"/>
+                <variable type="boom" type-java="boom" name="boom2" value="new boom()" value-java=" new boom()" enable="true"/>
+                <call expression="addObject(boom2,308,442)" expression-java="addObject(boom2, 308, 442)" enable="true"/>
+            </body>
+        </method>
+    </methods>
+</class>
